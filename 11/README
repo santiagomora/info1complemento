@@ -1,0 +1,26 @@
+En este directorio se encuentran los programas que cumplen con 
+lo pedido en los ejercicios 11.1, 11.2 y 11.3. 
+Las bibliotecas se encuentran dentro de libsrc (libshared.so 
+es un link que apunta a libsrc/ver/libshared.so.1), y los hea-
+ders de las bibliotecas en info1includes. 
+Los programas compilados finales de cliente/servidor se encuen-
+tran dentro de la carpeta e2 en shared, static y dynamic (debe 
+ejecutarse desde dentro la carpeta dynamic porque el link a 
+la biblioteca dinamica se encuentra configurado desde esa loca-
+cion relativa, este comportamiento pudo ser evitado usando un 
+path absoluto). 
+Inclui un makefile para compilar y limpiar todos los programas 
+ejecutando make desde esta carpeta en la forma:
+
+make all: 	crea todas las bibliotecas compartidas y 
+		los directorios donde estas seran almacenadas,
+		luego ejecuta el make de los programas finales
+		almacenado en ./e2. Este crea las carpetas para
+		guardar los archivos ejecutables finales y los 
+		ultimos tambien.
+	
+make clean: 	limpia todas las carpetas de bibliotecas compiladas
+		libsrc/ver, info1libs, libsrc/obj y las carpetas
+		donde se almacenan los archivos ejecutables finales
+		e2/shared, e2/dynamic y e2/static
+

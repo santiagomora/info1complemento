@@ -1,0 +1,67 @@
+la secuencia de comandos ejecutados es: 
+./my_stat input/arch1
+ln input/arch1 h1
+./my_stat input/arch1
+
+############################################# antes de crear link
+File:	input/arch1
+Size:	0
+Owner:	User ID:	1000
+	Group ID:	1000
+	Permission:	100742/-rwxr---w-
+Device number:	806(hex)/2054(dec)	Inode number:	537381
+Hard Links:	1	Device ID (special file):	0
+----------------------------------------------
+Filesystem:	Total size (bytes):	0
+		Block size:		4096
+		512B blocks allocated:	0
+----------------------------------------------
+Date:	Last access:		Thu Mar 12 12:01:54 2020
+	Last modification:	Thu Mar 12 12:01:54 2020
+	Last status change:	Thu Mar 12 12:01:54 2020
+
+############################################# luego de crear link
+File:	input/arch1
+Size:	0
+Owner:	User ID:	1000
+	Group ID:	1000
+	Permission:	100742/-rwxr---w-
+Device number:	806(hex)/2054(dec)	Inode number:	537381
+Hard Links:	2	Device ID (special file):	0
+----------------------------------------------
+Filesystem:	Total size (bytes):	0
+		Block size:		4096
+		512B blocks allocated:	0
+----------------------------------------------
+Date:	Last access:		Thu Mar 12 12:02:11 2020
+	Last modification:	Thu Mar 12 12:02:11 2020
+	Last status change:	Thu Mar 12 12:02:11 2020
+
+
+Podemos observar que el archivo ahora tiene dos hard links asociados.
+Se mantiene el inodo original en 537381.
+Cambian las fechas de modificacion, acceso y cambio.
+Si ejecutamos my_stat sobre el enlace h1:
+
+File:	h1
+Size:	0
+Owner:	User ID:	1000
+	Group ID:	1000
+	Permission:	100742/-rwxr---w-
+Device number:	806(hex)/2054(dec)	Inode number:	537381
+Hard Links:	2	Device ID (special file):	0
+----------------------------------------------
+Filesystem:	Total size (bytes):	0
+		Block size:		4096
+		512B blocks allocated:	0
+----------------------------------------------
+Date:	Last access:		Thu Mar 12 12:06:10 2020
+	Last modification:	Thu Mar 12 12:06:10 2020
+	Last status change:	Thu Mar 12 12:06:10 2020
+
+Nos muestra la misma informacion que al ejecutarlo sobre input/arch1.
+	Este comportamiento es de esperarse dada la naturaleza del 
+comando ln que, al ser invocado sin switches, genera un enlace (hard link) 
+que apunta al inodo del archivo original. Este hard link es simplemente 
+otra manera de llamar el archivo original, por lo que el link h1 conserva
+los metadatos de input/arch1.

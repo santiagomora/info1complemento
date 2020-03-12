@@ -1,0 +1,17 @@
+Al utilizar el signal handler signal y asociarlo 
+con la señal SIGCHLD, el handler sera activado
+ante la finalizacion de cualquier proceso hijo.
+
+Al invocar wait(NULL) dentro del handler, 
+estamos permitiendo al sistema liberar los recursos
+asociados con el proceso hijo que termino y previniendo 
+que entre en estado zombie. La presencia de NULL como 
+parametro nos indica que evitaremos guardar informacion 
+adicional del proceso hijo terminado. 
+
+Una vez que el proceso principal recibe la señal desde 
+el primer hijo finalizado, reanuda desde el punto donde 
+se invoco sleep() y finaliza su ejecucion. Puede recibir 
+las señales de los demas hijos pero estas pasan a estar 
+en estado pendiente hasta que se resuelvan las que lle-
+garon primero.

@@ -1,0 +1,11 @@
+total 48
+drwxr-xr-x 2 santiagomora santiagomora 4096 ene 18 18:30 Desktop
+drwxr-xr-x 4 santiagomora santiagomora 4096 feb  3 09:51 Documents
+drwxr-xr-x 2 santiagomora santiagomora 4096 feb  6 00:06 Downloads
+-rw-r--r-- 1 santiagomora santiagomora 8980 ene 18 18:07 examples.desktop
+drwxr-xr-x 2 santiagomora santiagomora 4096 ene 18 18:30 Music
+drwxr-xr-x 2 santiagomora santiagomora 4096 feb  6 17:56 Pictures
+drwxr-xr-x 2 santiagomora santiagomora 4096 ene 18 18:30 Public
+drwxr-xr-x 3 santiagomora santiagomora 4096 ene 19 12:52 snap
+drwxr-xr-x 2 santiagomora santiagomora 4096 ene 18 18:30 Templates
+drwxr-xr-x 2 santiagomora santiagomora 4096 ene 18 18:30 Videos

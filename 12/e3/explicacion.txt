@@ -1,0 +1,18 @@
+modificamos el signal handler para que opere mientras 
+se siga recibiendo señales de los child process cuya 
+finalizacion este en estado pendiente.
+
+Para recibir todas las señales de los hijos (fila de se-
+ñales pendientes), colocamos la funcion waitpid() dentro de 
+un ciclo while().
+
+El -1 indica que recibiremos señales de cualquier 
+proceso hijo. WNOHANG indica que retornaremos inmediata-
+mente.
+
+Podemos observar que la cantidad de procesos zombie dis-
+minuyo considerablemente respecto del primer ejercicio,
+pero arroja resultados similares al ejercicio anterior:
+Los procesos zombie no aparecen durante el tiempo comple-
+to de ejecucion.
+

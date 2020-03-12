@@ -1,0 +1,5 @@
+hemos añadido una señal para terminar cada 
+proceso hijo que termina luego de escribir en el buffer.
+de esta manera evitamos tener procesos hijo 
+en estado zombie, como sucedia en el ejemplo
+anterior

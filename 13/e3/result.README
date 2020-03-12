@@ -1,0 +1,15 @@
+Hemos introducido un ciclo en el programa client.c que 
+hace 10000 conexiones al servidor. 
+Al intentarlo contra el servidor del ejercicio 13.1
+	observamos que los procesos hijos quedan en
+estado zombie hasta que termina el proceso principal
+(SIGSTOP) o Ctrl+C.
+	si añadimos un sig handler para liberar los 
+pid a medida que cada hijo termina su ejecucion (SIGCHLD)
+que invoque el syscall wait(NULL), no todos los procesos
+hijo terminan adecuadamente (hay algunos que no terminan).
+	si esperamos que el programa termine con todas 
+las instancias hijo, (server en e2 y e3) observamos que 
+se cierran correctamente, quedando el proceso principal
+en estado S (int sleep).
+	todo esto con el client.c desarrollado en e3/src/client.c

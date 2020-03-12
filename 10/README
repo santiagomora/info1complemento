@@ -1,0 +1,11 @@
+En este directorio se encuentran los programas que cumplen con 
+lo pedido en los ejercicios 10.1, 10.2, 10.3, 10.4, 10.5, 10.6 en 
+las carpetas e1, e2, e3, e4, e5 y e6 respectivamente. Todas las car-
+petas tienen su makefile, que se ejecuta con el comando make 
+estando dentro de ellas. adicionalmente inclui un makefile para
+compilar y limpiar todos los programas ejecutando make desde 
+esta carpeta en la forma
+
+make all 	- crea todos los programas de e1-e6
+make clean 	- limpia todos los programas de e1-e6
+

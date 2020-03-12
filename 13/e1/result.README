@@ -1,0 +1,11 @@
+Luego de crear el servidor concurrente, añadiendo la syscall 
+fork() luego de aceptar un pedido, podemos observar que al 
+momento de terminar la ejecucion del proceso hijo, este 
+queda en estado zombie porque desde el padre no se ha liberado
+correctamente, para lo cual podemos añadir un handler a la señal
+SIGCHLD como hemos hecho previamente, y liberar de esta manera 
+el pid ocupado por el hijo a medida que van terminando las cone-
+xiones. 
+En este ejercicio hemos agregado un handler que limpia correc-
+tamente cada proceso cuando termina
+
