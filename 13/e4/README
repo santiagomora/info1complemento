@@ -1,0 +1,11 @@
+13.4 EJERCICIO 4 - enunciado
+	Tomar el programa servidor.c del Ejercicio 13.3, y 
+limitar la cantidad de procesos child que pueden estar eje-
+cutando en forma simultánea, de modo de limitar la sobrecarga 
+de equipo en el que ejecuta el server.
+	Utilice la función sleep () para simular la duración 
+del proceso. Al finalizar el proceso cliente, verificar con el 
+comando ps -elf, el estado del proceso servidor. Anotar sus con-
+clusiones en un archivo de texto plano result.README el que 
+deberá subir junto con los fuentes de cliente y servidor y el 
+Makefile correspondiente.

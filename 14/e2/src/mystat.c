@@ -33,6 +33,8 @@ void printperm(mode_t mode){
 int main (int argc,char** argv) {
 	struct stat myfstat;
 	struct tm * my_tm;
+	struct group* grp;
+	struct passwd * usr;
 
 	char linkref[1024];
 	int read=0;
@@ -42,6 +44,8 @@ int main (int argc,char** argv) {
 		exit(1);
 	} else {
 		if ( stat(argv[1],&myfstat) != -1 ) {
+			grp = getgrgid(myfstat.st_gid);
+			usr = getpwuid(myfstat.st_uid);
 			if ( ( read=readlink( argv[1],linkref,sizeof(linkref)-1 ) ) != -1){
 				linkref[read] = '\0';
 				if (lstat(argv[1],&myfstat) == -1)
@@ -50,7 +54,7 @@ int main (int argc,char** argv) {
 			} else	
 				printf("File:\t%s\n",argv[1]);
 			printf("Size:\t%ld\n",myfstat.st_size);
-			printf("Owner:\tUser ID:\t%d\n\tGroup ID:\t%d\n",myfstat.st_uid,myfstat.st_uid);
+			printf("Owner:\tUser:\t%d/%s\n\tGroup:\t%d/%s\n",myfstat.st_uid,usr->pw_name,myfstat.st_uid,grp->gr_name);
 			printf("\tPermission:\t%04o/",myfstat.st_mode);
 			printperm(myfstat.st_mode);
 			printf("\nDevice number:\t%lx(hex)/%ld(dec)\t",myfstat.st_dev,myfstat.st_dev);

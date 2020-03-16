@@ -1,9 +1,5 @@
 #include "../../../11/info1includes/sock-lib.h"
 
-void hand(int st) {
-	wait(NULL);
-}
-
 int main ()
 {
 	int sockfd; 			/* File Descriptor del socket por el que el servidor "escuchará" conexiones*/
@@ -11,9 +7,6 @@ int main ()
 	struct sockaddr_in my_addr;	/* contendrá la dirección IP y el número de puerto local */
 	int sockdup; 
 	int ch;
-
-	signal(SIGCHLD,hand);
-
 
 	if ((sockfd = Open_conection (&my_addr)) == -1)
 	{
@@ -35,10 +28,8 @@ int main ()
 			}
 			close(sockdup);
 			exit(0);
-		} else {
+		} else 
 			close(sockdup);
-		}
-		
 	}
 	exit(0);
 }

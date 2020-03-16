@@ -1,0 +1,12 @@
+14.3 EJERCICIO 3 - enunciado
+	Desde la consola crear un hard link para cualquiera de los 
+achivos y ejecutar my_stat para el archivo "original"y para el 
+link creado mediante el comando ln.
+	Comparar la salida respecto de la salida del archivo orig-
+inal antes de crear el link. Elaborar en un archivo de texto un bre-
+ve informe con las conclusiones. Debe detallarse que valores cambian
+en el archivo original luego de creado el link, así como la correspon-
+dencia de valores al ejecutar my_stat en ambos archivos (original y 
+enlace). ¿Que nos sugiere el número de i-nodo del archivo original y 
+del enlace creado con ln?.¿Como explica el valor de este metadato en 
+ambos archivos?

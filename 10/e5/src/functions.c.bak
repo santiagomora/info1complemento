@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+#include "./head/calculos.h"
+
+int errno;
+
+void calculos ( char* path ) {
+	
+	double read, *nums = malloc( 101*sizeof(double) );
+	int k = 0;			
+	FILE* fp = fopen( path, "r" );
+
+	if ( fp ){
+		fscanf( fp,"%lf",&read );
+		while ( !feof( fp ) ) {
+			nums[k++] = read;
+			fscanf( fp,"%lf",&read );
+			if ( ( k%100 == 0 || feof( fp ) ) && k>0 ) {
+				nums = mostrarCalculos( nums,k );
+				k=0;
+			}
+		}
+		fclose( fp );
+	}
+	else puts( strerror(errno) );
+
+} 
+
+int printSource( char* path_to_file ){
+	calculos( path_to_file );
+	return 0;
+}

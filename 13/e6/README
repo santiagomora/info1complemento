@@ -1,0 +1,20 @@
+13.6 EJERCICIO 6 - enunciado
+	Tomar el programa del Ejercicio 13.5 y reemplazar el mane-
+jador de la señal SIGHUP, de modo tal que cuando el proceso reciba 
+esa señal vuelva a leer el archivo de configuración y recargar en 
+tiempo real las variables globales con el/los eventual/es nuevo/s 
+valor/es definido/s para el/los parámetro/s.
+	Reiniciar el nuevo servidor con una configuración dada en 
+el archivo /etc/servidor.conf. Una vez activo el servidor editar el 
+archivo de configuración y modificar su contenido (recordar invocar 
+al editor con el comando sudo para poder ganar permisos de modifica-
+ción en el directorio /etc). Salvar los cambios y enviar desde el 
+shell la señal SIGHUP al proceso servidor para verificar que los pará-
+metros modificados han sido efectivamente tomados por el servidor.
+
+--------------------------------------------------------------------
+EXPLICACION 
+	Añadimos un handler a la señal SIGHUP al proceso servidor 
+que lee nuevamente los datos del archivo de configuracion invocando
+la funcion initvars(). Además reinicia la cantidad de conexiones ac-
+tuales.

@@ -1,0 +1,31 @@
+13.1 EJERCICIO 1 - enunciado
+	Tomar el código de los archivos cliente.c y servidor.c, que 
+figuran como ejemplos de base de clase ubicados en el público del 
+curso (en el path publico/Clases/Clase20-2017-09-18/sources), y con-
+vertir a servidor.c en un servidor concurrente, que por cada pedido 
+de un cliente responda el típico mensaje "Hola Mundo!" (ya habrá
+tiempo de complicar esta operatoria funcional).
+
+	Utilizar la syscall fork () para este propósito creando una 
+instancia hijo (child) que responda el pedido mientras que el proceso 
+principal (el proceso padre, regrese a ejecutar la función 
+Aceptar_pedidos ()).
+
+	Tal como se dijo en clase, el proceso padre, una vez creada 
+la instancia hijo que resolverá el pedido, deberá cerrar el socket 
+duplicado regresado por la función Aceptar_pedidos (), para luego vol-
+ver a la línea en que invoca a dicha función una y otra vez.Por su 
+parte el proceso hijo recientemente creado cerrará el socket original 
+que el proceso padre utiliza para recibir pedidos de conexión, y uti-
+lizará solamente su copia del socket duplicado utilizando a éste para 
+enviar el mensaje al cliente remoto.
+
+	Utilizar para desarrollar la biblioteca shared bajo las condiciones 
+de uso descriptas en el Ejercicio 11.1 Ejecutar 10 veces el programa 
+cliente para comprobar el correcto funcionamiento. Una vez ejecutado 
+10 veces el programa cliente inspeccionar con el comando ps -elf, el 
+estado del proceso servidor. Anotar sus conclusiones en un archivo de 
+texto plano result.README el que deberá subir junto con los fuentes de 
+cliente y servidor y el Makefile correspondiente. En dicho archivo de-
+berá explicar el resultado y proponer una solución en el caso de en-
+contrar a su criterio algún problema.

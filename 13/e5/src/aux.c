@@ -25,11 +25,14 @@ void readvar (char* buf, char** vname, char** vval ) {
 
 int initvars(struct vconf* vars,int (*assign)(char*,char*,struct vconf*)) {
 	FILE* config;
-	char buf[BUF_SIZE];
-	char* vval,*vname;
+	size_t bufsize = BUF_SIZE;
+        int read;
+	char *buf = malloc( bufsize*sizeof( char ) );
+	char *vval,*vname;
        	config = fopen("/etc/servidor.conf","r");
 	if (config) {
-		while( fgets( buf,BUF_SIZE,config ) && !feof(config) ){
+		while( ( read = getline( &buf,&bufsize,config ) ) > 0 && !feof(config) ){
+			buf[read-1] = '\0';
 			readvar( buf,&vname,&vval );
 			if (vname && vval){
 				if ( assign( vname,vval,vars ) == -1 ) {

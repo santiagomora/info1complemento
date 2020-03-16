@@ -1,0 +1,30 @@
+10.3 EJERCICIO 1 - enunciado
+En el repositorio público se provee un archivo con números en punto 
+flotante doble precisión. Se pide escribir un programa que abra dicho 
+archivo, lea los valores y entregue en pantalla por cada grupo de 100 
+valores double leídos los siguientes valores y los imprima por stdout:
+
+-	Valor medio (o promedio), dado por la expresión:
+	prom(x) = ( 1/n )( sum(xi) ) i belongs to [0,n]
+
+-	Varianza, calculada mediante la siguiente expresión:
+	var(x) = ( 1/n )( sum( (xi - prom(x))^2 ) i belongs to [0,n]
+
+En este ejercicio las funciones estan divididas en dos fuentes:
+-	funciones.c: donde se emplea un ciclo for para recorrer el
+	archivo de entrada flotantes.dp. Detecta y almacena cada 
+	uno de los flotantes en el archivo de entrada, cuando llega
+	a los 100 leidos (o al final del archivo). muestra en panta-
+	lla el promedio y varianza de esos 100 numeros.
+
+-	calculos.c: donde se calcula la varianza y el promedio, ade-
+	mas incluye una funcion para mostrar los resultados por sa-
+	lida estandar.
+
+REQUERIMENTOS
+flotantes.dp debe ser un archivo con numeros de punto flotante de 
+doble precision separados por " " (whitespace). 
+
+COMO MEJORAR
+podriamos añadir un buffer para no leer directamente del stream, 
+esto optimizaria el tiempo de ejecucion.    

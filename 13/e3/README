@@ -1,0 +1,11 @@
+13.3 EJERCICIO 3 - enunciado
+	Tomar ahora el código del programa cliente.c utilizado en 
+el Ejercicio anterior y modificarlo para solicitar 10000 pedidos 
+consecutivos al mismo programa servidor.c resultante del Ejer-
+cicio anterior.
+	Al finalizar el proceso cliente, verificar con el comando 
+ps -elf, el estado del proceso servidor. Anotar sus conclusiones en 
+un archivo de texto plano result.README el que deberá subir junto 
+con los fuentes de cliente y servidor y el Makefile correspondiente. 
+En dicho archivo deberá explicar el resultado y proponer una solu-
+ción en el caso de encontrar a su criterio algún problema.

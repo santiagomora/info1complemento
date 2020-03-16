@@ -1,0 +1,3 @@
+10.1 EJERCICIO 1 - enunciado
+Escribir un programa que abra su propio archivo fuente y lo 
+presente en pantalla. No utilizar printf para acceder a stdout.

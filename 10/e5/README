@@ -1,0 +1,17 @@
+10.5 EJERCICIO 1 - enunciado
+Repetir el Ejercicio 10.3, pero utilizando las funciones de 
+manejo de streams de entrada salida buffereada definidas en 
+stdio.h.
+
+GENERAR EJECUTABLE result1:
+Para realizar este ejercicio utilizamos un buffer que tuvie-
+ra el tamaño del archivo a ser leido, dado el formato del ar-
+chivo de entrada. 
+Esto puede ser riesgoso dependiendo del tamaño del archivo 
+por la cantidad de memoria que se reserva con malloc, este en 
+particular (flotante.dp) reserva la cantidad de 2869 bytes.
+
+GENERAR EJECUTABLE result2:
+Utilizamos el metodo getline para leer las lineas del archivo
+añadimos tambien los handlers para detectar errores en caso de
+encontrar una linea que genere un error en la funcion malloc.

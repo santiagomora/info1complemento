@@ -1,0 +1,64 @@
+13.5 EJERCICIO 5 - enunciado
+
+	Tomar el programa del ejercicio 13.4, y agregar un archivo de 
+configuración en el cual podamos escribir parámetros genera-
+les de uso. Por el momento configuraremos la cantidad de childs. 
+El nombre del archivo es /etc/servidor.conf (usar sudo para edi-
+tarlo con permisos de modificación, de otro modo lo abrirá
+read only).
+
+	El archivo de configuración es ascii, y la sintaxis es:
+
+	parámetro1=valor1
+	parámetro2=valor2
+	...
+	...
+	parámetron=valorn
+
+	El programa deberá tener una función para leer el archivo 
+de configuración y establecer los valores globales de esas variables. 
+Esa función deberá estar en un archivo llamado aux.c.
+
+---------------------------------------------------------------------
+OBSERVACIONES 
+	Para implementar la funcion de leido de variables de configu-
+racion, definimos dos estructuras:
+
+-	struct vconf: una estructura donde se almacenan las variables
+	globales que se leerán del archivo de configuracion.
+-	struct name: una estructura donde se asocia el nombre de una
+	variable global con una identificacion unica.
+
+	La idea seria guardar en un arreglo de estructuras (struct name* 
+cnames) los nombres de las variables globales asociados a una id, y en una 
+estructura (struct vconf init) las variables globales que estaremos leyendo 
+del archivo. 
+	Se espera que en el archivo fuente (aquel que desea usar las utili-
+dades de inicializacion definidas en aux.c, que en este caso seria server.c) 
+se encuentre una definicion de:
+
+1.	La estructura con las variables a inicializar.
+2.	Una estructura con los nombres de las variables a inicializar definidos
+	en 1, asociados a un id unico.
+3 	Una funcion assignvariables() donde se definiria el switch para inicia-
+	lizar esta estructura, asociando los id con las variables definidas en 1. Esta
+	ultima funcionaria como un callback ejecutado a la hora de leer cada linea. y 
+	se debe pasar como parametro a la funcion initvars().
+	
+	De esta manera definimos cuatro funciones para la inicializacion de
+variables:
+
+-	assignvars(): switch donde se asocian los id de las variables con
+	los valores de la estructura struct vconf init donde estan las varia-
+	bles globales.
+-	initvars(): funcion para la lectura del archivo tomando en cuenta 
+	el formato especificado.
+-	getvnameid(): toma el nombre de la variable que se acaba de leer del
+	archivo de configuracion y se asocia al id almacenado en el arreglo 
+	de variables inicializadas.
+-	readvar(): lee la variable de la linea tomada del  archivo de configu-
+	racion.
+
+	Si hubiera otras variables que inicializar, se tendria que agregar en 
+struct vconf asociada al tipo, en el arreglo struct names cname, asociandola a
+un id unico, y por ultimo una sentencia case en el switch de assignvars.

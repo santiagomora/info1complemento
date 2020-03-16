@@ -1,0 +1,19 @@
+12.1 EJERCICIO 1 - enunciado
+Escribir un programa que cree 10000 instancias child. Cada 
+una debe dormir durante 5 segundos y finalizar. Mientras tan-
+to el proceso padre deberá dormir 30 segundos o mas y terminar. 
+Utilizar en una segunda consola el comando 
+
+	ps -elf | grep [nombre del programa ejecutable] | grep defunct | wc -l. 
+
+	El resultado debe ser 10000. ¿Porque?. Calibrar el tiempo 
+que duerme el programa padre de modo de poder ver el estado 
+de los 10000 childs luego de terminar. Tal vez la visualización 
+del estado (simplemente eliminando el ultimo comando de la lista 
+de comandos encolados con el pipe, le permita visualizar el detalle
+del estado de los procesos child y obtener la respuesta. 
+
+	Si le resulta mas cómodo ejecutar el sleep del proceso pa-
+dre dentro de un while infinito. Para normalizar e equipo en caso 
+de demora infinita en el padre, pulse CTRL-C en la consola donde el 
+se está ejecutando el proceso.

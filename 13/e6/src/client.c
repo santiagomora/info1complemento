@@ -24,7 +24,7 @@ int main(int argc, char * argv[])
 		}
 		/* Visualizamos lo recibido */
 		buf[numbytes] = '\0';
-		printf("Recibido: %s\n",buf);
+		printf("Recibido: %s,solicitud:%d\n",buf,i);
 		/* Devolvemos recursos al sistema */
 		close(sockfd);
 	}

@@ -1,5 +1,9 @@
-struct ptarr readFile ( char* );
-void generarPuntos( int );
-void escribirPuntos ( struct ptarr,char* );
+int readFile ( char*, struct ptarr* );
+
+int generarPuntos( int );
+
+int escribirPuntos ( struct ptarr,char* );
+
 void ordenarPuntos ( struct ptarr );
-void mostrarPuntos ( struct ptarr );
+
+int mostrarPuntos ( struct ptarr );

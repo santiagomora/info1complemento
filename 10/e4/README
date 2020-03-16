@@ -1,0 +1,11 @@
+10.4 EJERCICIO 1 - enunciado
+Repetir el Ejercicio 10.2, pero utilizando las funciones de 
+manejo de streams de entrada salida buffereada definidas en 
+stdio.h.
+
+para resolverlo se en el archivo fuente la siguiente funcion:
+	- printStream(): es la funcion que abre el archivo y se
+	encarga de la lectura. implementa un ciclo hasta alcan-
+	zar el final del archivo, almacenando los datos en el 
+	buffer, y luego mostrandolos por la muestra por la salida 
+	estandar.

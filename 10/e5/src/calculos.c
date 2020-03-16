@@ -24,6 +24,6 @@ double* mostrarCalculos ( double* nums, int length ) {
         double prom = promedio( nums,length ),
                 var = varianza( nums,prom,length );
         printf("inicio:%lf fin:%lf\n prom:%lf, var:%lf\n",nums[0],nums[length-1],prom,var);
-        return  realloc( nums,101*sizeof(double) );
+        return  realloc( nums,100*sizeof(double) );
 }
 

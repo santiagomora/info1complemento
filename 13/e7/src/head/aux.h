@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <error.h>
+#include <unistd.h>
+#include <signal.h>
 #ifndef CONF_STRUCT
 	#define CONF_STRUCT
 	struct vconf {

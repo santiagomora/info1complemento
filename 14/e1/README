@@ -1,0 +1,18 @@
+14.1 EJERCICIO 1 - enunciado
+	Explorar la syscall open (man 2 open). Utilizando el pro-
+totipo:
+
+	int open( constchar *path, intoflags, mode_tmode);
+
+	Experimentar con el tercer argumento de la función, (mode), 
+creando tres archivos, arch1, arch2 y arch3, cuyos permisos en octal 
+resulten en 742, 564, y 413 respectivamente. Verificar los permisos con
+el comando ls en el directorio en el que se crearon los archivos.
+	Considerar que hay una máscara por default que conviene modi-
+ficar para tener amplia disponibilidad de establecer permisos. Para 
+ello explorar la syscall umask (), con man 2 umask. Tener en cuenta 
+que el valor de máscara que se utiliza en una and con los permisos soli-
+citados es mask, es decir e complemento a 1 de la máscara que generamos con 
+umask ().
+	Las macros para los diferentes atributos de permisos se encuentran 
+en la misma página de man que describe la función.

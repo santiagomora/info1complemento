@@ -1,0 +1,15 @@
+13.2 EJERCICIO 2 - enunciado
+	Tomar el código del programa servidor.c utilizado en el 
+ejercicio 13.1 y modificarlo de modo que el proceso prin-
+cipal (el padre) espere por la finalización de cada pro-
+ceso hijo creado por el programa principal sin bloquearse, 
+de modo de ir a esperar mas pedidos de conexión con la 
+función Aceptar_pedidos ().
+	Utilizar la función waitpid () del mismo modo que en el 
+Ejercicio 12.3 Repetir las ejecuciones del programa cliente y 
+seguidamente verificar con el comando ps -elf, el estado del pro-
+ceso servidor. Anotar sus conclusiones en un archivo de texto 
+plano result.README el que deberá subir junto con los fuentes de 
+cliente y servidor y el Makefile correspondiente. En dicho archivo 
+deberá explicar el resultado y proponer una solución en el caso de 
+encontrar a su criterio algún problema.

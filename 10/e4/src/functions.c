@@ -1,27 +1,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
+#define BUFF_SIZE 1024
 
-void printStream ( char* path ) {
-	int size;
+int errno;
+
+int printSource( char* path ) {
+	int size=0;
 	FILE* fp = fopen( path, "r" );
-
+	char buff[BUFF_SIZE], 
+	     ver[] = "Viendo archivo: ";
+	
 	if (fp){
-		fseek( fp, 0, SEEK_END );
-		size = ftell( fp );
-		char* buff = malloc( size*sizeof( char )+1 );
-		// return pointer to original position
-		fseek( fp, 0, SEEK_SET );
-		fread( buff, size, sizeof( char ), fp );
-		puts( path );
-		puts( buff );
+		strcat ( ver,path );
+		puts( ver );
+		while ( !feof( fp ) ) {
+			size = fread( buff, sizeof( char ), sizeof(buff), fp );
+			buff[size-1] = '\0';
+			puts( buff );			
+		}
 		fclose( fp );
 	}
-	else printf( "El archivo no puede ser encontrado: %s\n", path );
-
+	return 0;
 } 
 
-int printSource( char* path_to_file ){
-	printStream( path_to_file );
-	return 0;
-}

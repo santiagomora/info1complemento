@@ -1,6 +1,5 @@
 #include "../../../../11/info1includes/sock-lib.h"
 #include "aux.h"
-#include <errno.h>
 #define NAMESTOSOLVE 1
 
 int errno;

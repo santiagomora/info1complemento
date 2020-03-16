@@ -1,0 +1,64 @@
+13.7 EJERCICIO 7 - enunciado
+Tomar el Ejercicio 13.6 y realizar las siguientes modificaciones:
+
+1.	Dejar en el fuente del programa principal solamente la función 
+	main (), las variables globales y la línea #include "servidor.h".
+2.	Crear el archivo seniales.c en el que se tengan las funciones mane-
+	jadoras (handlers) de las diferentes señales que se reemplacen para 
+	el sistema en desarrollo, así como una función que reemplace los
+	manejadores de las mismas por dichas funciones, cuyo prototipo se 
+	escribe a continuación:
+
+-	int sig_trap (void):La función devuelve 0 si todas las señales se 
+	reemplazaron exitosamente, y devuelve SIG_ERR en caso que al menos 
+	una no se haya podido reemplazar.
+
+3.	Crear un archivo child.c que contendrá la aplicación que debe ejecu-
+	tarse en cada instancia child creada por el programa principal en res-
+	puesta a un pedido de conexión de un cliente. La función principal
+	tiene el mismo prototipo, que la existente:
+
+-	void child_process (int s): En donde s es el file descriptor del socket 
+	obtenido por el proceso padre producto de invocar a la función 
+	Aceptar_conexiones (). 
+	
+	La función child_process debe implementar la siguiente operatoria:
+(a) 	Esperar por el socket s que el cliente envíe una string 
+	con el nombre de un archivo, con su ruta (path) completa o 
+	relativa.
+(b)	Recibida esa ruta, intentará abrir el archivo en la ruta especifica-
+	da (si recibió el nombre del archivo solamente, obviamente lo abrirá
+	en el directorio actual).
+(c) 	Si el archivo no existe o no puede abrirse enviará por el socket al
+	cliente la string 
+
+	"ERROR!: [string de descripción del error devuelta por strerror()] 
+	
+	y finaliza invocando a la syscall exit ().
+(d) 	Si el archivo existe, el child y lo puede abrir correctamente enviará al 
+	cliente la string "OK", y a continuación le transmitirá el archivo solici-
+	tado por el socket.
+(e) 	Finalizada la transmisión deberá terminar su ejecución invocando la 
+	syscall exit (). En caso de no tener éxito en la transmisión también ejecu-
+	tará exit () pero con un código de finalización que indique esta situación.
+
+4. 	Tomar el programa fuente del cliente y modificarlo para que interactúe con 
+	la instancia child del servidor de acuerdo con la operatoria descripta en el 
+	ítem 3. Como adicional el cliente tendrá una función que en caso de transcurrir 
+	30 segundos desde que envía el nombre del archivo al server sin respuesta
+	finalizará su ejecución, presentando en pantalla el mensaje de error correspon-
+	diente.
+
+--------------------------------------------------------------------
+OBSERVACIONES 
+1.	Dados los metodos usados explicados en ../e6/README, no pudimos dejar 
+	las variables globales dentro de server.c, sino que tuvimos que pasarlos a ser-
+	vidor.h para que servidor.c y seniales.c pudieran tener acceso a ellas.
+	Por esto en el archivo server.c solo quedo la funcion main().
+2. 	Si se quisiere enviar un archivo binario, al momento de recibirlo, 
+	tendriamos que modificar los permisos de ejecucion (755 funcionaria
+	al momento de recibir ejecutables client o server).
+3.	El archivo recibido tendra el nombre de serverfile, y, si no existia,
+	sera creado. En caso contrario se sobreescribira el archivo actual.
+
+

@@ -7,11 +7,36 @@ estamos permitiendo al sistema liberar los recursos
 asociados con el proceso hijo que termino y previniendo 
 que entre en estado zombie. La presencia de NULL como 
 parametro nos indica que evitaremos guardar informacion 
-adicional del proceso hijo terminado. 
+adicional del proceso hijo terminado. Observamos que el 
+proceso padre se comporta de la siguiente manera:
 
-Una vez que el proceso principal recibe la señal desde 
-el primer hijo finalizado, reanuda desde el punto donde 
-se invoco sleep() y finaliza su ejecucion. Puede recibir 
-las señales de los demas hijos pero estas pasan a estar 
-en estado pendiente hasta que se resuelvan las que lle-
-garon primero.
+1.	crea los 10000 hijos
+2.	entra en un estado sleep durante 30 segundos
+3.	cuando finaliza el primer hijo, al cabo de los 5 se-
+	gundos de haber sido creado por el padre, el pro-
+	ceso hijo envia la señal SIGCHLD, interrumpiendo
+	el estado sleep() del padre. Luego, llegan 9999 seña-
+	les SIGCHLD al handler, que las maneja en orden de 
+	llegada.
+4.	el handler, a su vez, invoca la syscall wait() que pausa 
+	la ejecucion del proceso padre 	hasta que alguno de los 
+	otros hijos haya terminado y luego libera los recursos
+	hasta que esto suceda. Si es solo un hijo sal inmediatamen-
+	te.
+		En este punto cabe destacar que como el programa 
+	principal recibio una señal (SIGCHLD), sale del estado sleep() 
+	y pasa a esperar en wait(), configurado dentro del han-
+	dler. 
+5. 	cuando termina otro proceso hijo, el proceso padre
+	sale del estado wait() en el que se encontraba y ter-
+	mina su ejecucion. 
+		En la ventana temporal entre el momento 
+	que llega la señal para continuar desde el primer wait() 
+	y el que termina su ejecucion, pueden terminar otros pro-
+	cesos hijo, pero como terminan tantos en tan poco tiempo, 
+	el programa padre puede terminar sin que cierren todos los 
+	hijos. Observamos que tambien puede parecer que, como 
+	llegan muchas señales al handler y al principal, el princi-
+	pal finalice reasuma desde varios puntos y tambien que los hijos 
+	finalicen luego del programa principal.
+

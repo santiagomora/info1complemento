@@ -1,0 +1,12 @@
+12.3 EJERCICIO 3 - enunciado
+Tomar el código desarrollado en el Ejercicio 12.2 y 
+mejore el handler utilizando la función waitpid (),
+utilizando WNOHANG para el argumento opciones (3er. Argu-
+mento), de modo de poder cerrar la totalidad de procesos 
+childs que están solicitando exit (), por cada ciclo de 
+uso del handler de SIGCHLD. Repita el comando 
+
+	ps -elf | grep [nombre del programa ejecutable] | grep defunct | wc -l 
+
+en otra consola y observe el resultado. Escribir un pe-
+queño reporte en un archivo de texto plano a modo de reseña.

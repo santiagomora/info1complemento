@@ -37,7 +37,7 @@ void chldhand (int sg) {
 }
 
 void huphand (int sg) {
-	printf("leyendo nuevamente el archivo de configuracion servidor.conf\n");
+	printf("leyendo nuevamente el archivo de configuracion /etc/servidor.conf\n");
 	cctr=0;
 	if ( initvars(&init,assignvar) != 0 ) {
 		exit(1);

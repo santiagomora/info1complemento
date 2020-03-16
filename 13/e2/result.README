@@ -1,5 +1,9 @@
-hemos añadido una señal para terminar cada 
-proceso hijo que termina luego de escribir en el buffer.
-de esta manera evitamos tener procesos hijo 
-en estado zombie, como sucedia en el ejemplo
-anterior
+EXPLICACION
+	Hemos añadido un handler a la señal SIGCHLD 
+para terminar cada proceso hijo que termina luego de 
+del intercambio cliente-servidor.
+	De esta manera evitamos tener procesos hijo 
+en estado zombie, como sucedia en el ejercicio an-
+terior. 
+	Observamos que el proceso padre sigue en
+interruptible sleep.

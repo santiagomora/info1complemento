@@ -6,7 +6,7 @@
 // asociados a un id unico. los nombres deberan
 // ser unicos tambien
 const struct name cnames[NAMESTOSOLVE] = {
-	(struct name){.string="chmax",.id=1}
+	(struct name){.string="chmax",.id=1},
 };
 
 // cuantas conexiones estan activas
@@ -30,8 +30,8 @@ int assignvar(char* name, char* value, struct vconf* vars){
 void chldhand (int sg) {
 	int w;
 	pid_t fid;
+	cctr--;
 	while ((fid = waitpid(-1,&w,WNOHANG)) > 0){
-		cctr--;
 		printf("finalizado:%d,status:%d\n",fid,w);
 	}
 }
@@ -47,7 +47,7 @@ int main ()
 	if (initvars(&init,assignvar) != 0){
 		exit(1);
 	}
-
+	
 	signal(SIGCHLD,chldhand);
 
 	if ((sockfd = Open_conection (&my_addr)) == -1)

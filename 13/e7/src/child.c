@@ -23,27 +23,26 @@ void child_process (int sockdup) {
 		perror("error de lectura en el socket");
 		exit(1);                
 	}
+
 	printf("archivo a enviar:%s\n",buf);
 	fp = fopen(buf,"r");
+	// para timeout de cliente 
+	// sleep(30);
 	
 	if (!fp) {
 		strcat(err,strerror(errno));
-		if (write (sockdup, err , strlen(err)) == -1){
+		if (write (sockdup, err , strlen(err)) == -1)
                         perror("error de escritura en el socket");
-                        exit(1);
-                }
 		exit(1);
 	} else {
 		if (write (sockdup, confirm , sizeof (confirm)) == -1){
                 	perror("error de escritura en el socket");
         	        exit(1);
-	        } else {
-			if ( sendfile(fp,sockdup) == 0 ) 
-				printf("archivo enviado exitosamente\n");
-			fclose(fp);
-		}
-		exit(1);
+	        } else if ( sendfile(fp,sockdup) == 0 ) 
+			printf("archivo enviado exitosamente\n");
+		fclose(fp);
 	}
+
 	close(sockdup);
 	exit(0);
 }

@@ -1,0 +1,34 @@
+10.6 EJERCICIO 1 - enunciado
+	Escribir un programa que inicialice con números reales repre-
+sentados en doble precisión normalizada, un array de estructuras punto 
+con la utilizada en el Ejercicio ??. La cantidad de elementos del array, 
+se recibe como argumento por línea de comandos. Una vez terminada la ge-
+neración del set de números, almacenarlos en un archivo ./puntos.dp.
+	Una vez que el archivo se haya generado, el programa deberá 
+presentar un menú con las siguientes opciones cada una de las cuales de-
+berá ser resuelta por una función separada:
+
+-	Presentar cada par de valores generados en el archivo
+-	Ordenar los valores mediante la coordenada x de cada punto, con-
+	tenido en la estructura.
+
+Para solucionar este ejercicio implementamos las estructuras: 
+
+-	Punto (struct punto): una estructura que almacena las coordina-
+	das x e y.
+-	Arreglo de puntos (struct ptarr): que almacena la longitud del 
+	punto, y un arreglo hacia las estructuras que conforman el arre-
+	glos.
+
+y las funciones contenidas en acciones.c: 
+
+-	generarPuntos(): genera los puntos aleatorios y los almacena en 
+	puntos.dp añadiendolos al final de los valores previos.
+-	readFile(): toma los puntos aleatorios en el archivo puntos.dp
+	y crea la estructura donde se almacenan los puntos como arreglo
+	(struct ptarr)
+-	escribirPuntos(): escribe los puntos almacenados en el arreglo 
+	en el archivo puntos.dp.
+-	mostrarPuntos(): muestra los puntos almacenados en la estruc-
+	tura ptarr;
+-	ordernaPuntos(): ordena los puntos de la estructura ptarr.

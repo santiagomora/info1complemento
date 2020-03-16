@@ -34,7 +34,9 @@ int main(int argc, char * argv[])
 	received = 0;
 	int sockfd,numbytes;  		/* File Descriptor para sockets */
 	char message[MAXDATASIZE]; 	/* Buffer donde se escribe el archivo a abrir*/
+	
 	signal(SIGALRM,almhand);
+	
 	/* Tratamiento de la línea de comandos. */
 	if (argc < 2)
 	{
@@ -43,16 +45,17 @@ int main(int argc, char * argv[])
         }
 
 	sockfd = conectar (argc, argv);
+	
 	/* pasamos el nombre del archivo al servidor */
 	printf("introduzca la ruta del archivo:%s\n",message);
 	scanf("%s",message);
 	printf("archivo a encontrar:%s\n",message);
-	alarm(30);
 
 	if (write (sockfd, message , sizeof (message)) == -1){
 		perror("error de escritura en el socket");
 		exit(1);
 	}
+	alarm(30);
 	
 	if ((numbytes = read (sockfd, message, sizeof(message))) == -1){       
                 perror("error de lectura en el socket");

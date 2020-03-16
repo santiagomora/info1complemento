@@ -7,8 +7,8 @@ int cctr;
 void chldhand (int sg) {
 	int w;
 	pid_t fid;
-	while ((fid = waitpid(-1,&w,WNOHANG)) > 0){
-		cctr--;
+	cctr--;
+	while ((fid = waitpid(-1,&w,WNOHANG)) > 0) {
 		printf("finalizado:%d,status:%d\n",fid,w);
 	}
 }
@@ -46,7 +46,7 @@ int main ()
 		} else {
 			close(sockdup);
 			cctr++;
-			if (cctr == MAX_CONN){
+			if (cctr > MAX_CONN){
 				pause();	
 			}
 		}	
