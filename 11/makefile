@@ -62,7 +62,7 @@ builde2: $(shbuild) $(stbuild)
 	make all -C ./e2
 
 all:    buildtree 	\
-	builde2
+	builde2		\
 
 # avoid build of false target clean 
 #
