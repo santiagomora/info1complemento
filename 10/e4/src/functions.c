@@ -21,7 +21,9 @@ int printSource( char* path ) {
 			puts( buff );			
 		}
 		fclose( fp );
-	}
-	return 0;
+		exit(0);
+	} else 
+		printf("ERROR:%s\n",strerror(errno));
+	exit(1);
 } 
 

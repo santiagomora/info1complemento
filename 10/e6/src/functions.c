@@ -16,12 +16,13 @@ Presione ESC para salir.\n");
 			switch ( opt ) {
 				case 'a':
 					system("clear");
-					mostrarPuntos( puntos );
+					if ( mostrarPuntos( puntos ) )
+						exit(1);
 					break;
 				case 'b':
 					system("clear");
-					ordenarPuntos( puntos );
-					escribirPuntos( puntos,"w" );
+					if ( ordenarPuntos( puntos ) || escribirPuntos( puntos,"w" ) )
+						exit(1);
 					break;
 				default:
 					break;
@@ -34,5 +35,5 @@ Presione ESC para salir.\n");
 int printSource( char* charsize ){
 	if ( generarPuntos( atoi( charsize ) ) != -1 )
 		mostrarMenu(); 
-	return 0;
+	exit(0);
 }

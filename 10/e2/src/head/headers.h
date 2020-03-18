@@ -1,1 +1,1 @@
-void printSource( char* );
+int printChars( char* );

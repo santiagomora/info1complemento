@@ -4,6 +4,6 @@ int generarPuntos( int );
 
 int escribirPuntos ( struct ptarr,char* );
 
-void ordenarPuntos ( struct ptarr );
+int ordenarPuntos ( struct ptarr );
 
 int mostrarPuntos ( struct ptarr );

@@ -25,13 +25,13 @@ int readFile ( char* path, struct ptarr *res ) {
 			res->length = k;
 		} else {
 			fprintf(stderr,"ERROR: %s\n",strerror(errno));
-			return -1;
+			return 1;
 		}
 		fclose( fp );
 		return 0;
 	} 
 	fprintf(stderr,"ERROR: %s\n",strerror(errno));	
-	return -1;
+	return 1;
 }
 
 int escribirPuntos ( struct ptarr ptarr,char* mod ) {
@@ -48,7 +48,7 @@ int escribirPuntos ( struct ptarr ptarr,char* mod ) {
 		return 0;
 	} 
 	fprintf(stderr,"ERROR: %s\n",strerror(errno));	
-	return -1;
+	return 1;
 }
 
 int generarPuntos ( int n ) {
@@ -66,26 +66,29 @@ int generarPuntos ( int n ) {
 		return escribirPuntos( ptarr,"a" );
 	}
 	fprintf(stderr,"ERROR: %s\n",strerror(errno));	
-	return -1;
+	return 1;
 }
 
-void ordenarPuntos ( struct ptarr pts ) {
+int ordenarPuntos ( struct ptarr pts ) {
 	struct punto aux;
-       	struct punto* puntos = pts.puntos; 	
 	int i, max = pts.length;
-
-	while ( i<max ) {
-		if ( puntos[i+1].x>puntos[i].x ) {
-			aux = puntos[i+1];
-			puntos[i+1] = puntos[i];
-			puntos[i] = aux;
+	if (max > 0) {
+		while ( i<pts.length ) {
+			if ( pts.puntos[i+1].x>pts.puntos[i].x ) {
+				aux = pts.puntos[i+1];
+				pts.puntos[i+1] = pts.puntos[i];
+				pts.puntos[i] = aux;
+			}
+			if ( i==max-1 ) {
+				max--;
+				i=0;
+			} else
+				i++;
 		}
-		if ( i==max-1 ) {
-			max--;
-			i=0;
-		} else
-			i++;
+		return 0;
 	}
+	printf("ERROR:no hay puntos que ordenar\n");
+	return 1;
 
 }
 
@@ -98,6 +101,6 @@ int mostrarPuntos ( struct ptarr puntos ) {
 		}
 		return 0;
 	}
-	printf("Puntos no almacenados correctamente");
-	return -1;	
+	printf("Puntos no almacenados correctamente\n");
+	return 1;	
 }

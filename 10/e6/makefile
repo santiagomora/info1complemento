@@ -1,21 +1,15 @@
 
 cs=src
-hs=src/head
-os=$(cs)/obj
+hs=$(cs)/head
 flags=-Wall -lm
 
-ofiles=$(os)/main.o $(os)/functions.o $(os)/acciones.o
-cfiles=$(cs)/main.c $(cs)/functions.c $(cs)/acciones.c
-heads=$(hs)/headers.h $(hs)/punto.h $(hs)/acciones.h
+cfiles=$(wildcard $(cs)/*.c)
+heads=$(wildcard $(hs)/*.h)
 
 output=result
 
-$(os)/%.o: $(cs)/%.c $(heads)
-	gcc -c -o $@ $<	$(flags)
-
-main: $(ofiles)
+main: $(cfiles) $(heads)
 	gcc -o $(output) $(cfiles) $(flags)
 
 clean:
-	rm -f $(os)/*.o
 	rm result

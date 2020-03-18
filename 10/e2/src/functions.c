@@ -1,24 +1,23 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <errno.h>
 
-void printChars ( char* path ) {
+int errno;
 
+int printChars ( char* path ) {
 	FILE* fp = fopen( path, "r" );
-
+	char c;
 	if (fp){
 		printf("el archivo fuente de %s: \n",path);
-		char c = fgetc(fp);
-		while ( c != EOF ) {
+		while ( ( c = fgetc( fp ) ) != EOF ) {
 			putchar(c);
-			c = fgetc(fp);
 		}
 		fclose(fp);
+		exit(0);
 	}
-	else printf( "El archivo no puede ser encontrado: %s\n", path );
-
+	else 
+		printf( "ERROR: %s\n",strerror(errno) );
+	exit(1);
 } 
 
-int printSource( char* path_to_file ){
-	printChars( path_to_file );
-	return 0;
-}
